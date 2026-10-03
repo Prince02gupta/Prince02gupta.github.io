@@ -1,0 +1,195 @@
+/* ========== 1. VARIABLES ========== */
+:root {
+  --desktop: #008080;     /* classic teal */
+  --face: #c0c0c0;        /* window gray */
+  --dark: #808080;
+  --darker: #404040;
+  --navy: #000080;
+  --white: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--desktop);
+  font-family: Tahoma, "MS Sans Serif", "Segoe UI", sans-serif;
+  font-size: 14px;
+  color: #000;
+  height: 100vh;
+  overflow: hidden;
+  user-select: none;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ========== 2. THE 3D LOOK (raised and sunken borders) ==========
+   Raised: light top/left, dark bottom/right.  Sunken: the opposite. */
+.win, .btn3d, .startbtn, .taskbar, .menu {
+  background: var(--face);
+  border: 2px solid;
+  border-color: var(--white) var(--darker) var(--darker) var(--white);
+  box-shadow: 1px 1px 0 #000;
+}
+
+/* ========== 3. DESKTOP ICONS ========== */
+.icons {
+  position: absolute; top: 14px; left: 14px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.icon {
+  width: 84px; text-align: center; color: #fff;
+  text-shadow: 1px 1px 0 #000;
+  padding: 4px; outline: none;
+}
+.icon span { display: block; font-size: 2.4rem; line-height: 1.2; }
+.icon:hover, .icon:focus { background: rgba(0, 0, 128, 0.6); outline: 1px dotted #fff; }
+
+/* ========== 4. WINDOWS (hidden until targeted) ========== */
+.win {
+  display: none;            /* every window is hidden by default */
+  position: absolute;
+  width: 400px;
+  z-index: 10;
+}
+/* THE BIG TRICK: when the URL ends with #about, the element with id="about"
+   becomes :target, and we show it. */
+.win:target { display: block; z-index: 20; }
+
+/* Welcome window shows only when nothing else is targeted */
+.welcome { display: block; top: 90px; left: 50%; margin-left: -150px; width: 340px; }
+body:has(.win:target) .welcome:not(:target) { display: none; }
+body:has(.shutdown:target) .welcome { display: none; }
+
+/* Each window gets its own position so they feel like real windows */
+.w-about   { top: 50px;  left: 150px; }
+.w-skills  { top: 80px;  left: 220px; width: 360px; }
+.w-journey { top: 60px;  left: 190px; width: 420px; }
+.w-experience { top: 70px; left: 210px; width: 440px; }
+.w-facts   { top: 100px; left: 250px; width: 360px; }
+.w-contact { top: 90px;  left: 200px; width: 420px; }
+.w-error   { top: 140px; left: 50%; margin-left: -170px; width: 340px; }
+
+/* Title bar with gradient + close button */
+.titlebar {
+  display: flex; justify-content: space-between; align-items: center;
+  background: linear-gradient(90deg, var(--navy), #1084d0);
+  color: #fff; font-weight: bold;
+  padding: 3px 4px; margin: 2px;
+}
+.x {
+  background: var(--face); color: #000;
+  width: 18px; height: 16px; line-height: 12px; text-align: center;
+  border: 2px solid; border-color: var(--white) var(--darker) var(--darker) var(--white);
+  font-size: 11px;
+}
+.x:active { border-color: var(--darker) var(--white) var(--white) var(--darker); }
+.content { padding: 12px; line-height: 1.5; }
+.content p { margin-bottom: 8px; }
+.right { text-align: right; }
+
+/* ========== 5. WIDGETS ========== */
+.btn3d {
+  display: inline-block; padding: 4px 14px; cursor: pointer;
+}
+.btn3d:active { border-color: var(--darker) var(--white) var(--white) var(--darker); }
+.btnrow { display: flex; gap: 8px; flex-wrap: wrap; }
+
+fieldset {
+  border: 2px groove var(--white);
+  padding: 8px 10px; margin-top: 10px;
+}
+legend { padding: 0 4px; }
+
+.about-row { display: flex; gap: 14px; align-items: center; }
+.about-row h1 { font-size: 1.5rem; }
+.avatar {
+  font-size: 3.4rem; width: 84px; height: 84px;
+  display: flex; align-items: center; justify-content: center;
+  background: #fff;
+  border: 2px solid; border-color: var(--darker) var(--white) var(--white) var(--darker); /* sunken */
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Sunken white box used for list and notepad */
+.list, .notepad pre {
+  background: #fff;
+  border: 2px solid; border-color: var(--darker) var(--white) var(--white) var(--darker);
+  padding: 8px;
+}
+.list { list-style: none; margin-bottom: 10px; }
+.list li { padding: 2px 0; }
+.notepad { padding: 4px; }
+.notepad pre { font-family: "Courier New", monospace; font-size: 13px; white-space: pre-wrap; }
+.menubar { display: flex; gap: 14px; padding: 2px 8px; }
+
+/* Windows-style progress bar made of blue blocks */
+.progress {
+  height: 22px; background: #fff; padding: 2px; margin-bottom: 10px;
+  border: 2px solid; border-color: var(--darker) var(--white) var(--white) var(--darker);
+}
+.progress span {
+  display: block; height: 100%;
+  width: var(--v);                  /* value comes from the HTML */
+  background: repeating-linear-gradient(90deg, var(--navy) 0 10px, transparent 10px 12px);
+  animation: load 1.6s steps(12) both;
+}
+@keyframes load { from { width: 0; } }
+
+/* Experience window: list of items with icons */
+.exp {
+  display: flex; gap: 12px; align-items: flex-start;
+  background: #fff; padding: 8px; margin-bottom: 8px;
+  border: 2px solid; border-color: var(--darker) var(--white) var(--white) var(--darker);
+}
+.exp:hover { background: #dfe9ff; }
+.exp-icon { font-size: 2rem; line-height: 1; }
+.exp small { color: var(--dark); }
+.status {
+  margin: 4px 0 0; padding: 2px 6px; font-size: 12px;
+  border: 1px solid; border-color: var(--dark) var(--white) var(--white) var(--dark);
+}
+
+/* ========== 6. TASKBAR ========== */
+.taskbar {
+  position: fixed; bottom: 0; left: 0; right: 0; height: 36px;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 3px 4px; z-index: 100;
+}
+.startbtn { padding: 3px 12px; cursor: pointer; }
+#start:checked ~ .taskbar .startbtn {
+  border-color: var(--darker) var(--white) var(--white) var(--darker);
+}
+.tray {
+  padding: 4px 12px;
+  border: 2px solid; border-color: var(--darker) var(--white) var(--white) var(--darker);
+}
+
+/* Start menu appears when the hidden checkbox is checked */
+.menu {
+  display: none; list-style: none;
+  position: fixed; bottom: 38px; left: 4px; width: 210px; z-index: 99;
+}
+#start:checked ~ .menu { display: block; }
+.menu a { display: block; padding: 8px 14px; }
+.menu a:hover { background: var(--navy); color: #fff; }
+.menu .sep { border-top: 2px groove var(--white); margin: 3px 0; }
+
+/* ========== 7. SHUTDOWN SCREEN ========== */
+.shutdown {
+  display: none; position: fixed; inset: 0; z-index: 200;
+  background: #000; color: #ff9900;
+  flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; font-size: 1.6rem; gap: 2rem;
+}
+.shutdown:target { display: flex; }
+.shutdown a { font-size: 1rem; color: #aaa; }
+.shutdown a:hover { color: #fff; }
+
+/* ========== 8. RESPONSIVE (phones) ========== */
+@media (max-width: 700px) {
+  .icons { flex-direction: row; flex-wrap: wrap; width: calc(100% - 28px); }
+  .icon { width: 64px; font-size: 12px; }
+  .win, .welcome, .w-about, .w-skills, .w-journey, .w-experience, .w-facts, .w-contact, .w-error {
+    left: 8px; right: 8px; width: auto; margin-left: 0; top: 150px;
+  }
+  body { overflow-y: auto; }
+}

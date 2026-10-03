@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prince OS 95</title>
+  <link rel="stylesheet" href="win95.css" />
+</head>
+<body>
+
+<!-- #desktop is an empty "home" target: clicking it closes any open window -->
+<div id="desktop"></div>
+
+<!-- ================= DESKTOP ICONS =================
+     Each icon is a link to a window's id (like href="#about").
+     CSS :target then shows the window whose id is in the URL. No JS needed! -->
+<nav class="icons">
+  <a href="#about"   class="icon"><span>🖥️</span>About Me</a>
+  <a href="#skills"  class="icon"><span>📂</span>Skills</a>
+  <a href="#experience" class="icon"><span>📁</span>Experience</a>
+  <a href="#journey" class="icon"><span>📝</span>Journey.txt</a>
+  <a href="#facts"   class="icon"><span>🗑️</span>Fun Facts</a>
+  <a href="#contact" class="icon"><span>🌐</span>Contact</a>
+</nav>
+
+<!-- ================= WINDOWS ================= -->
+
+<!-- Welcome window (shown by default until you open something) -->
+<section class="win welcome" id="welcome">
+  <div class="titlebar"><span>👋 Welcome</span><a href="#desktop" class="x">✕</a></div>
+  <div class="content">
+    <p><b>Welcome to Prince OS 95!</b></p>
+    <p>I'm a 1st year B.Tech student at IIIT Guwahati and a member of the Programming Club.</p>
+    <p>Double... well, single click an icon on the desktop to explore my world.</p>
+    <p class="right"><a class="btn3d" href="#about">Open About Me</a></p>
+  </div>
+</section>
+
+<section class="win w-about" id="about">
+  <div class="titlebar"><span>🖥️ About Me - Properties</span><a href="#desktop" class="x">✕</a></div>
+  <div class="content">
+    <div class="about-row">
+      <div class="avatar">😎</div> <!-- Replace with <img src="me.jpg" alt="me"> -->
+      <div>
+        <h1>Prince Gupta</h1>
+        <p>B.Tech CSE, 1st Year<br/>IIIT Guwahati, Assam</p>
+      </div>
+    </div>
+    <fieldset>
+      <legend>Bio</legend>
+      <p>I am from Indore, Madhya Pradesh. I am currently pursuing B.Tech CSE at IIIT Guwahati. I am passionate about coding, technology, and exploring new things. My goal is to keep learning, build useful projects, and grow as a developer.</p>
+    </fieldset>
+    <fieldset>
+      <legend>System</legend>
+      <p>Hometown: Indore<br/>Club: Programming Club<br/>Status: Learning HTML &amp; CSS &amp; C &amp; python</p>
+    </fieldset>
+  </div>
+</section>
+
+<section class="win w-skills" id="skills">
+  <div class="titlebar"><span>📂 C:\Skills</span><a href="#desktop" class="x">✕</a></div>
+  <div class="content">
+    <p>HTML</p>       <div class="progress"><span style="--v:54%"></span></div>
+    <p>CSS</p>        <div class="progress"><span style="--v:20%"></span></div>
+    <p>C </p>    <div class="progress"><span style="--v:35%"></span></div>
+    <p>Python</p>     <div class="progress"><span style="--v:4%"></span></div>
+    
+  </div>
+</section>
+
+<section class="win w-experience" id="experience">
+  <div class="titlebar"><span>📁 C:\Experience</span><a href="#desktop" class="x">✕</a></div>
+  <div class="menubar"><span>File</span><span>Edit</span><span>View</span><span>Help</span></div>
+  <div class="content">
+    <!-- Copy one .exp block for each experience you want to add -->
+    <div class="exp">
+      <div class="exp-icon">💼</div>
+      <div>
+        <b>Programming Club Member</b> <small>(Sep 2026 - Present)</small><br/>
+        IIIT Guwahati. Learning web development and building my first projects.
+      </div>
+    </div>
+    <div class="exp">
+      <div class="exp-icon">🏆</div>
+      <div>
+        <b>Your Achievement / Competition</b> <small>(Year)</small><br/>
+        Currently exploring coding,  college activities, and  opportunities to participate in competitions and hackathons.
+      </div>
+    </div>
+    <div class="exp">
+      <div class="exp-icon">🛠️</div>
+      <div>
+        <b>Personal Project</b> <small>(Year)</small><br/>
+        I am currently building this about me website using HTML and CSS to showcase my skills, projects, and  journney as a CSE student.
+      </div>
+    </div>
+    <p class="status">3 object(s)</p>
+  </div>
+</section>
+
+<section class="win w-journey" id="journey">
+  <div class="titlebar"><span>📝 Journey.txt - Notepad</span><a href="#desktop" class="x">✕</a></div>
+  <div class="menubar"><span>File</span><span>Edit</span><span>Search</span><span>Help</span></div>
+  <div class="content notepad">
+<pre>2026 - Joined IIIT Guwahati.
+       New city, new friends, new code.
+
+Oct 2026 - Joined the Programming Club.
+       First task: build an About Me site.
+
+Next  - Learn C/C++, python.
+       Hackathons, projects, internships.
+
+|| Building cool web apps &amp; open-source projects.</pre>
+  </div>
+</section>
+
+<section class="win w-facts" id="facts">
+  <div class="titlebar"><span>🗑️ Fun Facts</span><a href="#desktop" class="x">✕</a></div>
+  <div class="content">
+    <ul class="list">
+      <li>🎧 Loves: movies, music, coding, gaming</li>
+      <li>☕ Fuel: coffee</li>
+      <li>😴 Sleep: loading... please wait</li>
+      <li>🐛 Bugs found so far: infinity</li>
+      <li>🎬 Favourite: Interstellar, Oppenheimer, MARVEL, Death Note, Spiderman</li>
+    </ul>
+    <p class="right"><a class="btn3d" href="#error">Do not click</a></p>
+  </div>
+</section>
+
+<section class="win w-contact" id="contact">
+  <div class="titlebar"><span>🌐 Internet Explorer - Contact</span><a href="#desktop" class="x">✕</a></div>
+  <div class="content">
+    <p>Let's connect! Pick a protocol:</p>
+    <p class="btnrow">
+      <a class="btn3d" href="prince.gupta26b@iiitg.ac.in">📧 Email</a>
+      <a class="btn3d" href="https://github.com/Prince02gupta" target="_blank">💻 GitHub</a>
+      <a class="btn3d" href="https://www.linkedin.com/in/prince-gupta-5a8ab542b/" target="_blank">🔗 LinkedIn</a>
+      <a class="btn3d" href="https://www.instagram.com/prince._.xvii/" target="_blank">📷 Instagram</a>
+    </p>
+  </div>
+</section>
+
+<!-- Fake error dialog -->
+<section class="win w-error" id="error">
+  <div class="titlebar"><span>⚠️ Error</span><a href="#desktop" class="x">✕</a></div>
+  <div class="content">
+    <p>❌ Fatal Exception: Too much awesomeness detected.<br/>Please hire this student immediately.</p>
+    <p class="right"><a class="btn3d" href="#desktop">OK</a></p>
+  </div>
+</section>
+
+<!-- Shutdown screen -->
+<section class="shutdown" id="shutdown">
+  <p>It's now safe to turn off<br/>your computer.</p>
+  <a href="#desktop">[ Restart ]</a>
+</section>
+
+<!-- ================= TASKBAR + START MENU ================= -->
+<input type="checkbox" id="start" hidden />
+<div class="taskbar">
+  <label for="start" class="startbtn"><b>🪟 Start</b></label>
+  <div class="tray" id="clock">00:00</div>
+</div>
+<ul class="menu">
+  <li><a href="#about">🖥️ About Me</a></li>
+  <li><a href="#skills">📂 Skills</a></li>
+  <li><a href="#experience">📁 Experience</a></li>
+  <li><a href="#journey">📝 Journey</a></li>
+  <li><a href="#facts">🗑️ Fun Facts</a></li>
+  <li><a href="#contact">🌐 Contact</a></li>
+  <li class="sep"></li>
+  <li><a href="#shutdown">⏻ Shut Down...</a></li>
+</ul>
+
+<!-- Small JavaScript: only for the clock and closing the Start menu -->
+<script>
+  const clock = document.getElementById("clock");
+  function tick() {
+    clock.textContent = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  }
+  tick(); setInterval(tick, 1000);
+  document.querySelectorAll(".menu a").forEach(a =>
+    a.addEventListener("click", () => document.getElementById("start").checked = false));
+</script>
+</body>
+</html>
